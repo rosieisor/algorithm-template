@@ -1,14 +1,12 @@
-package backtracking;
+package backtracking.Permutation;
 
-public class PermutationTemplate {
+public class PermutationsWithRepetition {
     static int[] selected;
-    static boolean[] visited;
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4};
 
         selected = new int[3];
-        visited = new boolean[nums.length];
 
         backTracking(0, 3, nums);
     }
@@ -20,16 +18,13 @@ public class PermutationTemplate {
             }
 
             System.out.println();
+
             return;
         }
 
         for (int i = 0; i < nums.length; i++) {
-            if (!visited[i]) {
-                visited[i] = true;
-                selected[pick] = i;
-                backTracking(pick + 1, count, nums);
-                visited[i] = false;
-            }
+            selected[pick] = i;
+            backTracking(pick + 1, count, nums);
         }
     }
 }
